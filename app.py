@@ -6,9 +6,10 @@ from model_utils import load_model, update_model, save_feedback
 app = Flask(__name__)
 api = Api(app)
 
-# Homepage
+# Routing
 @app.route('/')
 
+# Homepage
 def home():
     return render_template('index.html')
 
