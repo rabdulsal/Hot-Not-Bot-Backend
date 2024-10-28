@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Status</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      h1 {
+        color: #333;
+      }
+      .endpoint {
+        margin: 10px 0;
+        font-size: 1.2em;
+      }
+      .endpoint a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .endpoint a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Backend API Status</h1>
+    <p>The backend server is running!</p>
+    <div class="endpoints">
+      <p class="endpoint">
+        <strong>Prediction Endpoint:</strong>
+        <a href="/predict" target="_blank">/predict</a>
+      </p>
+      <p class="endpoint">
+        <strong>Feedback Endpoint:</strong>
+        <a href="/feedback" target="_blank">/feedback</a>
+      </p>
+      <p class="endpoint">
+        <strong>Model Update Endpoint:</strong>
+        <a href="/update-model" target="_blank">/update-model</a>
+      </p>
+    </div>
+    <p>Use <code>POST</code> requests with JSON data for these endpoints.</p>
+  </body>
+</html>
