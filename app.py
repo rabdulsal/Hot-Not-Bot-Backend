@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_restful import Api, Resource
 import sqlite3
 from model_utils import load_model, update_model, save_feedback
@@ -17,13 +17,17 @@ def home():
 model = load_model()
 
 class Predict(Resource):
+
+    def preprocess(image, gender):
+        return "Pre-process Run!"
+
     def post(self):
         data = request.json
         image = data.get("image")
         gender = data.get("gender")
 
         # Run prediction (pseudo-code, assuming a preprocess function exists)
-        rating = model.predict(preprocess(image, gender))
+        # rating = model.predict(preprocess(image, gender))
         
         return jsonify({"rating": rating})
 
