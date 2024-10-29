@@ -1,7 +1,7 @@
 Flask==2.0.3
 Flask-RESTful==0.3.9
-torch==2.4.0              # or TensorFlow if using TF models
+torch#==2.4.0              # or TensorFlow if using TF models
 scikit-learn
 joblib                      # For model serialization if necessary
 pandas
-boto3                       # Only if using Amazon S3 for model storage
+#boto3                       # Only if using Amazon S3 for model storage

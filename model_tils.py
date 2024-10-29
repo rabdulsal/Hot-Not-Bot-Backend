@@ -64,15 +64,15 @@ def update_model():
 
 # --- Optional S3 integration for model storage ---
 
-import boto3
+# import boto3
 
 
-def save_model_to_s3():
-    s3 = boto3.client('s3')
-    s3.upload_file(MODEL_PATH, 'your-s3-bucket-name', 'model/mlmodel')
+# def save_model_to_s3():
+#     s3 = boto3.client('s3')
+#     s3.upload_file(MODEL_PATH, 'your-s3-bucket-name', 'model/mlmodel')
 
-def load_model_from_s3():
-    s3 = boto3.client('s3')
-    s3.download_file('your-s3-bucket-name', 'model/mlmodel', MODEL_PATH)
-    return joblib.load(MODEL_PATH)
+# def load_model_from_s3():
+#     s3 = boto3.client('s3')
+#     s3.download_file('your-s3-bucket-name', 'model/mlmodel', MODEL_PATH)
+#     return joblib.load(MODEL_PATH)
 
