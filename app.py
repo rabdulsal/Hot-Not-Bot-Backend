@@ -14,7 +14,7 @@ def home():
     return render_template('index.html')
 
 # Initialize the model at the start
-model = load_model()
+# model = load_model()
 
 class Predict(Resource):
 
