@@ -1,6 +1,6 @@
 import sqlite3
-# from sci-learn.model_selection import train_test_split
-# from sci-learn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 import joblib
 import os
 

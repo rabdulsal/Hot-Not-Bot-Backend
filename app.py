@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_restful import Api, Resource
 # import sqlite3
-# from model_utils import load_model, update_model, save_feedback
+from model_utils import load_model, update_model, save_feedback
 
 app = Flask(__name__)
 api = Api(app)
@@ -42,7 +42,7 @@ class Feedback(Resource):
         gender = data.get("gender")
 
         # Save feedback data to SQLite
-        # save_feedback(image, rating, user_rating, gender)
+        save_feedback(image, rating, user_rating, gender)
 
         return jsonify({"status": "success", "message": "Feedback received"})
 
