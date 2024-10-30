@@ -13,7 +13,7 @@ Flask
 # Werkzeug==3.0.6
 # zipp==3.20.2
 # torch              # or TensorFlow if using TF models
-# sci-learn
+scikit-learn
 # joblib                      # For model serialization if necessary
 # pandas
 gunicorn==23.0.0
