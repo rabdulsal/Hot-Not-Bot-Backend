@@ -16,5 +16,6 @@ torch              # or TensorFlow if using TF models
 sci-learn
 joblib                      # For model serialization if necessary
 pandas
+gunicorn==23.0.0
 # boto3
 Flask-RESTful
