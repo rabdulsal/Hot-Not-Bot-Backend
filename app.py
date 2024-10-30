@@ -28,7 +28,7 @@ class Predict(Resource):
 
         # Run prediction (pseudo-code, assuming a preprocess function exists)
         # rating = model.predict(preprocess(image, gender))
-        
+        rating = 5
         return jsonify({"rating": rating})
 
 

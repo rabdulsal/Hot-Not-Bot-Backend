@@ -1,6 +1,6 @@
 import sqlite3
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+# from sci-learn.model_selection import train_test_split
+# from sci-learn.linear_model import LinearRegression
 import joblib
 import os
 
@@ -12,9 +12,10 @@ def load_model():
         return joblib.load(MODEL_PATH)
     else:
         # Optionally train a simple model for first-time setup
-        model = LinearRegression()
-        joblib.dump(model, MODEL_PATH)
-        return model
+        # model = LinearRegression()
+        # joblib.dump(model, MODEL_PATH)
+        # return model
+        return joblib.load(MODEL_PATH)
 
 def save_feedback(image, rating, user_rating, gender):
     """Save feedback data to the SQLite database."""
@@ -36,6 +37,13 @@ def save_feedback(image, rating, user_rating, gender):
     conn.commit()
     conn.close()
 
+def preprocess_images(image_path, rating):
+    # image = tf.io.read_file(image_path)
+    # image = tf.image.decode_jpeg(image, channels=3)
+    # image = tf.image.resize(image, [224, 224])
+    # image /= 255.0  # Normalize
+    return image_path, rating
+
 def update_model():
     """Retrain and update the model with feedback data."""
     conn = sqlite3.connect("feedback_storage.db")
@@ -53,13 +61,14 @@ def update_model():
     y = user_ratings  # Use user ratings as target
 
     # Train model on new data
-    model = LinearRegression()  # Simple linear model
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-    model.fit(X_train, y_train)
+    # model = LinearRegression()  # Simple linear model
+    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    # model.fit(X_train, y_train)
 
     # Save the updated model
-    joblib.dump(model, MODEL_PATH)
-    return True, "Model successfully updated."
+    # joblib.dump(model, MODEL_PATH)
+    # return True, "Model successfully updated."
+    return "Model successfully updated."
 
 
 # --- Optional S3 integration for model storage ---

@@ -2,7 +2,7 @@ blinker==1.8.2
 certifi==2024.8.30
 charset-normalizer==3.4.0
 click==8.1.7
-Flask==3.0.3
+Flask
 idna==3.10
 importlib_metadata==8.5.0
 itsdangerous==2.2.0
@@ -16,5 +16,5 @@ torch              # or TensorFlow if using TF models
 sci-learn
 joblib                      # For model serialization if necessary
 pandas
-boto3
+# boto3
 Flask-RESTful
