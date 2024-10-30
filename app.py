@@ -1,6 +1,5 @@
-# from flask import Flask, request, jsonify, render_template
-from flask import Flask # Erase when Done!
-# from flask_restful import Api, Resource
+from flask import Flask, request, jsonify, render_template
+from flask_restful import Api, Resource
 # import sqlite3
 # from model_utils import load_model, update_model, save_feedback
 
@@ -12,8 +11,8 @@ app = Flask(__name__)
 
 # Homepage
 def home():
-    # return render_template('index.html')
-    return "<h1>Hello World from Flask-App</h1>"
+    return render_template('index.html')
+    # return "<h1>Hello World from Flask-App</h1>"
 
 # Initialize the model at the start
 # model = load_model()
