@@ -4,7 +4,7 @@ from flask_restful import Api, Resource
 # from model_utils import load_model, update_model, save_feedback
 
 app = Flask(__name__)
-# api = Api(app)
+api = Api(app)
 
 # Routing
 @app.route('/')
@@ -17,50 +17,51 @@ def home():
 # Initialize the model at the start
 # model = load_model()
 
-# class Predict(Resource):
+class Predict(Resource):
 
-#     def preprocess(image, gender):
-#         return "Pre-process Run!"
+    def preprocess(image, gender):
+        return "Pre-process Run!"
 
-#     def post(self):
-#         data = request.json
-#         image = data.get("image")
-#         gender = data.get("gender")
+    def post(self):
+        data = request.json
+        image = data.get("image")
+        gender = data.get("gender")
 
-#         # Run prediction (pseudo-code, assuming a preprocess function exists)
-#         # rating = model.predict(preprocess(image, gender))
-#         rating = 5
-#         return jsonify({"rating": rating})
-
-
-# class Feedback(Resource):
-#     def post(self):
-#         data = request.json
-#         image = data.get("image")
-#         rating = data.get("rating")
-#         user_rating = data.get("user_rating")
-#         gender = data.get("gender")
-
-#         # Save feedback data to SQLite
-#         save_feedback(image, rating, user_rating, gender)
-
-#         return jsonify({"status": "success", "message": "Feedback received"})
+        # Run prediction (pseudo-code, assuming a preprocess function exists)
+        # rating = model.predict(preprocess(image, gender))
+        rating = 5
+        return jsonify({"rating": rating})
 
 
-# class UpdateModel(Resource):
-#     def post(self):
-#         # Trigger model retraining
-#         success, message = update_model()
+class Feedback(Resource):
+    def post(self):
+        data = request.json
+        image = data.get("image")
+        rating = data.get("rating")
+        user_rating = data.get("user_rating")
+        gender = data.get("gender")
 
-#         if success:
-#             return jsonify({"status": "success", "message": "Model updated"})
-#         else:
-#             return jsonify({"status": "error", "message": message})
+        # Save feedback data to SQLite
+        # save_feedback(image, rating, user_rating, gender)
+
+        return jsonify({"status": "success", "message": "Feedback received"})
 
 
-# api.add_resource(Predict, '/predict')
-# api.add_resource(Feedback, '/feedback')
-# api.add_resource(UpdateModel, '/update-model')
+class UpdateModel(Resource):
+    def post(self):
+        # Trigger model retraining
+        # success, message = update_model()
+        success, message = True, "Here's the message"
+
+        if success:
+            return jsonify({"status": "success", "message": "Model updated"})
+        else:
+            return jsonify({"status": "error", "message": message})
+
+
+api.add_resource(Predict, '/predict')
+api.add_resource(Feedback, '/feedback')
+api.add_resource(UpdateModel, '/update-model')
 
 if __name__ == '__main__':
     app.run(debug=True)
