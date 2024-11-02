@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 import joblib
 import os
 
-MODEL_PATH = "models/Attractiveness.mlpackage"  # Path to CoreML model
+MODEL_PATH = "models/Attractiveness.mlpackage/Data/model.mlmodel"  # Path to CoreML model
 
 def load_model():
     """Load the current model from storage."""
@@ -15,7 +15,6 @@ def load_model():
         model = LinearRegression()
         joblib.dump(model, MODEL_PATH)
         return model
-        # return joblib.load(MODEL_PATH)
 
 def save_feedback(image, rating, user_rating, gender):
     """Save feedback data to the SQLite database."""
@@ -68,7 +67,6 @@ def update_model():
     # Save the updated model
     joblib.dump(model, MODEL_PATH)
     return True, "Model successfully updated."
-    # return "Model successfully updated."
 
 
 # --- Optional S3 integration for model storage ---
