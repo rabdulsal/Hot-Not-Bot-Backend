@@ -12,7 +12,6 @@ api = Api(app)
 # Homepage
 def home():
     return render_template('index.html', static_folder='./static')
-    # return "<h1>Hello World from Flask-App</h1>"
 
 # Initialize the model at the start
 model = load_model()
