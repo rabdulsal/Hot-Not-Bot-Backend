@@ -1,13 +1,54 @@
 from flask import Flask, request, jsonify, render_template
 from flask_restful import Api, Resource
 # import sqlite3
+import requests
+import os
 from model_utils import load_model, preprocess_images, update_model, save_feedback
 
 app = Flask(__name__)
 api = Api(app)
 
+# Keep track of the number of model updates
+update_count = 0
+UPDATE_THRESHOLD = 1000  # Trigger push notification after this many updates
+
 # Routing
 @app.route('/')
+@app.route('/update-model', methods=['POST'])
+
+
+def update_model():
+    global update_count
+    # Simulate model update logic (e.g., receiving and processing new ratings)
+    update_count += 1
+
+    if update_count >= UPDATE_THRESHOLD:
+        send_push_notification()
+        update_count = 0  # Reset the count after sending notification
+
+    return {"status": "Model updated successfully."}
+
+# Function to send push notifications via Firebase
+def send_push_notification():
+    FCM_SERVER_KEY = os.getenv("FCM_SERVER_KEY")  # Add your Firebase server key here
+    FCM_URL = "https://fcm.googleapis.com/fcm/send"
+    message = {
+        "to": "/topics/model_updates",  # All devices subscribed to this topic
+        "notification": {
+            "title": "New Model Update!",
+            "body": "A new model version is ready. Update now for the latest improvements!"
+        },
+        "data": {
+            "type": "model_update"
+        }
+    }
+    headers = {
+        "Authorization": f"key={FCM_SERVER_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(FCM_URL, json=message, headers=headers)
+    print(f"Push notification sent: {response.status_code}, {response.text}")
 
 # Homepage
 def home():
